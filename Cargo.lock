@@ -191,6 +191,7 @@ dependencies = [
  "console_error_panic_hook",
  "eframe",
  "egui_extras",
+ "log",
  "serde",
  "tracing-subscriber",
  "tracing-wasm",

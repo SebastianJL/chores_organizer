@@ -2,6 +2,7 @@ use std::vec;
 
 use eframe::egui;
 use egui_extras::{Size, TableBuilder};
+use log::info;
 
 use crate::chore::Chore;
 
@@ -67,12 +68,16 @@ impl eframe::App for App {
                 .striped(true)
                 .column(Size::at_least(Size::relative(0.3), 100.0))
                 .column(Size::at_least(Size::relative(0.3), 100.0))
+                .column(Size::remainder())
                 .header(20.0, |mut header| {
                     header.col(|ui| {
                         ui.heading("Chore");
                     });
                     header.col(|ui| {
                         ui.heading("Due");
+                    });
+                    header.col(|ui| {
+                        ui.heading("Actions");
                     });
                 })
                 .body(|mut body| {
@@ -83,6 +88,11 @@ impl eframe::App for App {
                             });
                             row.col(|ui| {
                                 ui.label(format!("{}", chore.due));
+                            });
+                            row.col(|ui| {
+                                if ui.button("done").clicked() {
+                                    info!("Done button clicked");
+                                }
                             });
                         });
                     }
