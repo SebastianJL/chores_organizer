@@ -10,5 +10,5 @@ pub struct Chore {
 #[derive(Debug, Deserialize, Serialize, PartialEq, Eq, Clone)]
 pub enum Owner {
     Linus,
-    Johannes
+    Johannes,
 }
